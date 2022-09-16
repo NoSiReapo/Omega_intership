@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:omega_intership/pages/favorite_empty_page.dart';
+import 'package:omega_intership/pages/favorite_page.dart';
 import 'package:omega_intership/pages/main_page.dart';
+import 'package:omega_intership/pages/recipe_panna_kotta_page.dart';
 import 'package:omega_intership/pages/recipes_page.dart';
 
 void main() {
@@ -18,6 +21,9 @@ class MyApp extends StatelessWidget {
       routes: {
         '/main': (context) => const MainPage(),
         '/recipes': (context) => const RecipesPage(),
+        '/favorite': (context) => const FavoritePage(),
+        '/favorite_empty': (context) => const FavoriteEmptyPage(),
+        '/recipe_panna_kotta': (context) => const PannaKottaPage(),
       },
     );
   }

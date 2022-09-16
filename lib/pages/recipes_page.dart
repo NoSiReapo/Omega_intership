@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RecipesPage extends StatelessWidget {
-  const RecipesPage({Key? key}) : super(key: key);
+  const RecipesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class RecipesPage extends StatelessWidget {
               child: const Text(
                 'Главная',
                 style: TextStyle(
-                  color: Colors.black45,
+                  color: Color(0xff9196A1),
                   fontSize: 18,
                   fontFamily: 'Montserrat',
                 ),
@@ -60,7 +60,7 @@ class RecipesPage extends StatelessWidget {
               child: const Text(
                 'Рецепты',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: Color(0xff3A3C41),
                   fontSize: 18,
                   fontFamily: 'Montserrat',
                 ),
@@ -72,11 +72,13 @@ class RecipesPage extends StatelessWidget {
               endIndent: 20,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () async {
+                await Navigator.pushReplacementNamed(context, '/favorite');
+              },
               child: const Text(
                 'Избранное',
                 style: TextStyle(
-                  color: Colors.black45,
+                  color: Color(0xff9196A1),
                   fontSize: 18,
                   fontFamily: 'Montserrat',
                 ),
@@ -371,6 +373,7 @@ class RecipesPage extends StatelessWidget {
               timeRequired: '35 мин',
               favoriteIconsString: 'images/filled_star.png',
               likeIconString: 'images/heart.png',
+              routeString: '/recipe_panna_kotta',
             ),
             const SizedBox(
               height: 40,
@@ -390,6 +393,10 @@ class RecipesPage extends StatelessWidget {
               timeRequired: '90 мин',
               favoriteIconsString: 'images/star.png',
               likeIconString: 'images/heart.png',
+              routeString: '/recipe',
+            ),
+            const SizedBox(
+              height: 40,
             ),
             const RecipeTable(
               recipeType1: 'десерты',
@@ -406,6 +413,7 @@ class RecipesPage extends StatelessWidget {
               timeRequired: '40 мин',
               favoriteIconsString: 'images/filled_star.png',
               likeIconString: 'images/filled_heart.png',
+              routeString: './recipe',
             ),
             const SizedBox(
               height: 40,
@@ -425,6 +433,7 @@ class RecipesPage extends StatelessWidget {
               timeRequired: '35 мин',
               favoriteIconsString: 'images/star.png',
               likeIconString: 'images/heart.png',
+              routeString: '/recipe',
             ),
             const SizedBox(
               height: 65,
@@ -581,6 +590,7 @@ class RecipeTable extends StatelessWidget {
     required this.timeRequired,
     required this.favoriteIconsString,
     required this.likeIconString,
+    required this.routeString,
     super.key,
   });
   final String recipeType1;
@@ -595,6 +605,7 @@ class RecipeTable extends StatelessWidget {
   final String recipeDescription;
   final String timeRequired;
   final String peopleNumber;
+  final String routeString;
 
   @override
   Widget build(BuildContext context) {
@@ -612,7 +623,9 @@ class RecipeTable extends StatelessWidget {
             ),
           ),
         ),
-        onPressed: () {},
+        onPressed: () async {
+          await Navigator.pushReplacementNamed(context, routeString);
+        },
         child: Row(
           children: [
             SizedBox(

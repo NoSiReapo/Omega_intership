@@ -59,7 +59,9 @@ class MainPage extends StatelessWidget {
               endIndent: 20,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () async {
+                await Navigator.pushReplacementNamed(context, '/favorite');
+              },
               child: const Text(
               'Избранное',
               style: TextStyle(
@@ -319,10 +321,11 @@ class MainPage extends StatelessWidget {
 
 class TableWidget extends StatelessWidget {
   const TableWidget(
-      {super.key,
+      {
       required this.text1,
       required this.text2,
-      required this.iconString,});
+      required this.iconString,
+        super.key,});
   final String text1;
   final String text2;
   final String iconString;
